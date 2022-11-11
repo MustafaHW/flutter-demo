@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # See https://www.dartlang.org/guides/libraries/private-files
 
 # Files and directories created by pub
@@ -20,7 +19,6 @@ doc/api/
 *.js_
 *.js.deps
 *.js.map
-=======
 # Miscellaneous
 *.class
 *.log
@@ -67,4 +65,3 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
->>>>>>> 621f6c7 (Implemented login/register/models)
