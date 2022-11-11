@@ -61,7 +61,7 @@ class _PostsViewState extends State<PostsView> {
           if (snapshot.hasData) {
             posts = [];
             posts = snapshot.data as List<PostModel>;
-
+            
             return ListView.builder(
                 itemCount: posts.length,
                 itemBuilder: ((context, index) {

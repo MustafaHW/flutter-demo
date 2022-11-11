@@ -9,10 +9,8 @@ import 'api-service.dart';
 class PostsService {
   Future<List<PostModel>> findAll(BuildContext context) async {
     final String posts = await ApiService().get('posts', context);
-    print('posts');
-    // print(jsonDecode(posts).toString());
-    // return PostModel.fromJSON(jsonDecode(posts)) as List;
-    return List<PostModel>.from(jsonDecode(posts).map((x) => PostModel.fromJSON(x)));
+    return List<PostModel>.from(
+        jsonDecode(posts).map((x) => PostModel.fromJSON(x)));
   }
 
   Future<Object> findOne(int id, BuildContext context) async {

@@ -7,16 +7,15 @@ class PostModel {
   String? authorLastName;
   dynamic? createdAt;
   dynamic? updatedAt;
-  PostModel({
-    this.id,
-    this.title,
-    this.content,
-    this.authorId,
-    this.authorFirstName,
-    this.authorLastName,
-    this.createdAt,
-    this.updatedAt
-  });
+  PostModel(
+      {this.id,
+      this.title,
+      this.content,
+      this.authorId,
+      this.authorFirstName,
+      this.authorLastName,
+      this.createdAt,
+      this.updatedAt});
   PostModel.fromJSON(Map<String, dynamic> json) {
     id = json["id"];
     title = json["title"];
