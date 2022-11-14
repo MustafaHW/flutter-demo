@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_2/constants/routes.dart';
+import 'package:flutter_application_2/providers/user-provider.dart';
 import 'package:flutter_application_2/services/auth-service.dart';
 import 'package:flutter_application_2/views/login-view.dart';
 import 'package:flutter_application_2/views/posts-view.dart';
 import 'package:flutter_application_2/views/register-view.dart';
+import 'package:provider/provider.dart';
 import 'dart:developer' as dev show log;
 // import 'package:flutter_application_2/models/testt.dart';
 // import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -12,7 +14,9 @@ import 'dart:developer' as dev show log;
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(const MyApp());
+  runApp(MultiProvider(providers: [
+    ChangeNotifierProvider(create: (context) => UserProvider()),
+  ], child: const MyApp()));
   // await dotenv.load(fileName: "/.env");
 
   // final testt = await ApiService().get("users");
@@ -94,7 +98,6 @@ class HomePage extends StatelessWidget {
     );
   }
 }
-
 
 intt(int a) {
   return a * 2;

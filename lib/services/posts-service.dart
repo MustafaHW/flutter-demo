@@ -7,25 +7,27 @@ import 'dart:developer' as dev show log;
 import 'api-service.dart';
 
 class PostsService {
+  final ApiService apiService = ApiService();
+
   Future<List<PostModel>> findAll(BuildContext context) async {
-    final String posts = await ApiService().get('posts', context);
+    final String posts = await apiService.get('posts', context);
     return List<PostModel>.from(
         jsonDecode(posts).map((x) => PostModel.fromJSON(x)));
   }
 
   Future<Object> findOne(int id, BuildContext context) async {
-    return ApiService().get('posts', context, params: id.toString());
+    return apiService.get('posts', context, params: id.toString());
   }
 
   create(createPostDto, BuildContext context) async {
-    return ApiService().post('', createPostDto, context);
+    return apiService.post('', createPostDto, context);
   }
 
   update(int id, updatePostDto, BuildContext context) async {
-    return ApiService().post('', updatePostDto, context);
+    return apiService.post('', updatePostDto, context);
   }
 
   delete(int id, BuildContext context) async {
-    return ApiService().delete('', id);
+    return apiService.delete('', id, context);
   }
 }

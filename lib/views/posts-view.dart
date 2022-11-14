@@ -1,13 +1,10 @@
 import 'dart:convert';
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_application_2/enums/enums.dart' show MenuActions;
 import 'package:flutter_application_2/models/posts.dart' show PostModel;
 import 'package:flutter_application_2/services/auth-service.dart';
 import 'package:flutter_application_2/services/posts-service.dart';
 import 'dart:developer' as dev show log;
-
 import 'package:flutter_application_2/services/template-service.dart';
 
 class PostsView extends StatefulWidget {
@@ -56,30 +53,29 @@ class _PostsViewState extends State<PostsView> {
         future: postsService.findAll(context),
         builder:
             ((BuildContext context, AsyncSnapshot<List<PostModel>> snapshot) {
-          // switch (snapshot.connectionState) {
-          // case ConnectionState.done:
           if (snapshot.hasData) {
             posts = [];
             posts = snapshot.data as List<PostModel>;
-
-            return ListView.builder(
-                itemCount: posts.length,
-                itemBuilder: ((context, index) {
-                  return ListTile(
-                    title: Text(
-                      posts[index].title,
-                      maxLines: 1,
-                      softWrap: true,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                  );
-                }));
+            if (posts?.length > 0) {
+              return ListView.builder(
+                  itemCount: posts.length,
+                  itemBuilder: ((context, index) {
+                    return ListTile(
+                      title: Text(
+                        posts[index].title,
+                        maxLines: 1,
+                        softWrap: true,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    );
+                  }));
+            }
+            return const Center(
+              child: Text('No posts found'),
+            );
           } else {
             return const CircularProgressIndicator();
           }
-          // default:
-          //   return const CircularProgressIndicator();
-          // }
         }),
       )),
     );
